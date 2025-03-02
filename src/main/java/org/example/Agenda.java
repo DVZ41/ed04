@@ -1,7 +1,6 @@
 package org.example;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -9,7 +8,7 @@ import java.util.List;
  * Permite agregar, eliminar y modificar contactos.
  */
 public class Agenda {
-    private final List<Contacto> contacts; // Lista de Contacto
+    private final List<Persona> contacts; // Lista de Contacto
 
     /**
      * Constructor de la agenda.
@@ -26,7 +25,7 @@ public class Agenda {
      */
     public void addContact(String name, String phone) {
         boolean exists = false;
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 exists = true;
                 c.getPhones().add(phone);
@@ -35,7 +34,7 @@ public class Agenda {
         }
 
         if (!exists) {
-            Contacto newContact = new Contacto(name, phone);
+            Persona newContact = new Persona(name, phone);
             contacts.add(newContact);
         }
     }
@@ -57,7 +56,7 @@ public class Agenda {
      * @param newPhone  Nuevo número de tlf.
      */
     public void modifyPhoneNumber(String name, String oldPhone, String newPhone) {
-        for (Contacto c : contacts) {
+        for (Persona c : contacts) {
             if (c.getName().equalsIgnoreCase(name)) {
                 List<String> phones = c.getPhones();
                 int index = phones.indexOf(oldPhone);
@@ -73,7 +72,7 @@ public class Agenda {
      *
      * @return Lista de contactos.
      */
-    public List<Contacto> getContacts() {
+    public List<Persona> getContacts() {
         return this.contacts;
     }
 }
